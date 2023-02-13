@@ -1,0 +1,15 @@
+### Get token
+GET http://localhost:4000/1
+Origin: http://localhost:3000
+
+### Mail
+POST http://localhost:4000/2
+Content-Type: application/json
+Origin: http://localhost:3000
+Api-Key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJpYXQiOjE2NzYyOTkyNTAsImV4cCI6MTY3NjI5OTg1MH0.TAHPlTKR9r-dKF6iQe11Tpn9vydn2_vdqQOFfhYeNx8
+
+{
+  "from": "sluzquinosa@uni.pe",
+  "subject": "Testing",
+  "text": "This is a test"
+}
