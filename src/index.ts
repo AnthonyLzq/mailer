@@ -12,10 +12,13 @@ const ORIGINS = ['http://localhost:3000', 'https://anthonylzq.dev']
 const main = async () => {
   await fastify.register(cors, {
     origin: (origin, cb) => {
+      console.log('🚀 ~ file: index.ts:15 ~ main ~ origin', origin)
+
       if (!origin || !ORIGINS.includes(origin))
         return cb(new Error('Not allowed'), false)
 
       const hostname = new URL(origin).hostname
+      console.log('🚀 ~ file: index.ts:19 ~ main ~ hostname', hostname)
 
       if (hostname === 'localhost') {
         cb(null, true)
