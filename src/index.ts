@@ -32,7 +32,10 @@ const main = async () => {
   fastify.addHook('preHandler', (req, reply, done) => {
     reply.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE')
     reply.header('Access-Control-Allow-Origin', '*')
-    reply.header('Access-Control-Allow-Headers', 'Authorization, Content-Type')
+    reply.header(
+      'Access-Control-Allow-Headers',
+      'Authorization, Content-Type, Origin'
+    )
     reply.header('x-powered-by', 'TPG')
     done()
   })
