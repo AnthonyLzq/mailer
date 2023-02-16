@@ -1,5 +1,5 @@
 import Fastify from 'fastify'
-import cors from '@fastify/cors'
+// import cors from '@fastify/cors'
 import jwt from 'jsonwebtoken'
 
 import { mailer } from 'mail'
@@ -10,16 +10,16 @@ const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4000
 const ORIGINS = ['http://localhost:3000', 'https://www.anthonylzq.dev']
 
 const main = async () => {
-  await fastify.register(cors, {
-    origin: (origin, cb) => {
-      console.log('🚀 ~ file: index.ts:15 ~ main ~ origin', origin)
+  // await fastify.register(cors, {
+  //   origin: (origin, cb) => {
+  //     console.log('🚀 ~ file: index.ts:15 ~ main ~ origin', origin)
 
-      if (!origin || !ORIGINS.includes(origin))
-        return cb(new Error('Not allowed'), false)
+  //     if (!origin || !ORIGINS.includes(origin))
+  //       return cb(new Error('Not allowed'), false)
 
-      return cb(null, true)
-    }
-  })
+  //     return cb(null, true)
+  //   }
+  // })
   fastify.addHook('preHandler', (req, reply, done) => {
     reply.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE')
     reply.header('Access-Control-Allow-Origin', '*')
@@ -29,6 +29,9 @@ const main = async () => {
     )
     reply.header('x-powered-by', 'TPG')
     done()
+  })
+  fastify.get('/', async (req, reply) => {
+    return reply.send({ error: false, message: 'Hello World' })
   })
   fastify.get<{ Params: { id: string } }>('/:id', async (req, reply) => {
     const {
