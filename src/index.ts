@@ -17,16 +17,7 @@ const main = async () => {
       if (!origin || !ORIGINS.includes(origin))
         return cb(new Error('Not allowed'), false)
 
-      const hostname = new URL(origin).hostname
-      console.log('🚀 ~ file: index.ts:19 ~ main ~ hostname', hostname)
-
-      if (hostname === 'localhost') {
-        cb(null, true)
-
-        return
-      }
-
-      return cb(new Error('Not allowed'), false)
+      return cb(null, true)
     }
   })
   fastify.addHook('preHandler', (req, reply, done) => {
