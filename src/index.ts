@@ -110,7 +110,8 @@ const main = async () => {
     }
   })
   await fastify.listen({
-    port: PORT
+    port: PORT,
+    host: '0.0.0.0'
   })
 
   console.log(`Server listening on port: ${PORT}`)
