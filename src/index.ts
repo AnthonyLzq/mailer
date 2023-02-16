@@ -29,6 +29,13 @@ const main = async () => {
       return cb(new Error('Not allowed'), false)
     }
   })
+  fastify.addHook('preHandler', (req, reply, done) => {
+    reply.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE')
+    reply.header('Access-Control-Allow-Origin', '*')
+    reply.header('Access-Control-Allow-Headers', 'Authorization, Content-Type')
+    reply.header('x-powered-by', 'TPG')
+    done()
+  })
   fastify.get<{ Params: { id: string } }>('/:id', async (req, reply) => {
     const {
       params: { id },
