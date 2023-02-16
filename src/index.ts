@@ -7,7 +7,7 @@ import { addTokenToBlackList, isTokenInBlackList } from 'database'
 
 const fastify = Fastify()
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4000
-const ORIGINS = ['http://localhost:3000', 'https://anthonylzq.dev']
+const ORIGINS = ['http://localhost:3000', 'https://www.anthonylzq.dev']
 
 const main = async () => {
   await fastify.register(cors, {
