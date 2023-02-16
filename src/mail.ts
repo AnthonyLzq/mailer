@@ -35,7 +35,7 @@ const mailer = async ({
       html,
       sender: EMAIL,
       subject: 'Message from your website',
-      text: `Subject: ${subject}\n\n${text}`,
+      text: `Subject: ${subject} - ${from}\n\n${text}`,
       to: EMAIL
     }
     await transporter.sendMail(mailOptions)
