@@ -12,8 +12,6 @@ const ORIGINS = ['http://localhost:3000', 'https://www.anthonylzq.dev']
 const main = async () => {
   await fastify.register(cors, {
     origin: (origin, cb) => {
-      console.log('🚀 ~ file: index.ts:15 ~ main ~ origin', origin)
-
       if (!origin || !ORIGINS.includes(origin))
         return cb(new Error('Not allowed'), false)
 
